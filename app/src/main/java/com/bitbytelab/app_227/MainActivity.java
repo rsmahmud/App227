@@ -19,10 +19,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,ReadWriteActivity.class));
             }
         });
-        findViewById(R.id.btn_animation).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_basic_animation).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,AnimActivity.class));
+            }
+        });
+        findViewById(R.id.btn_animation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,AnimationActivity.class));
             }
         });
         findViewById(R.id.btn_signup_activity).setOnClickListener(new View.OnClickListener() {
