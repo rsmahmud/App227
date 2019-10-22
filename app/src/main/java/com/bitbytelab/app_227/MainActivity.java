@@ -43,5 +43,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,CustomViewActivity.class));
             }
         });
+        findViewById(R.id.btn_surface_drawing_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,SurfaceDrawingActivity.class));
+            }
+        });
+        findViewById(R.id.btn_property_animation_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,PropertyAnimationActivity.class));
+            }
+        });
+        findViewById(R.id.btn_maps_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,MapsActivity.class));
+            }
+        });
     }
 }

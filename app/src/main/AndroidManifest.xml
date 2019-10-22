@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bitbytelab.app_227">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyAIwnbfnuDY9XMHOYNtDUlTsGS4cZ0bN1g" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CustomViewActivity"></activity>
+        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".MapsActivity" />
+        <activity android:name=".PropertyAnimationActivity" />
+        <activity android:name=".SurfaceDrawingActivity" />
+        <activity android:name=".CustomViewActivity" />
         <activity android:name=".AnimationActivity" />
         <activity android:name=".UserActivity" />
         <activity android:name=".SignInActivity" />
@@ -26,7 +37,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

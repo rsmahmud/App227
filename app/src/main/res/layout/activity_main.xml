@@ -40,5 +40,23 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:text="Custom View"/>
+    <Button
+        android:id="@+id/btn_surface_drawing_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="Surface View"/>
+    <Button
+        android:id="@+id/btn_maps_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="Maps Activity"/>
+    <Button
+        android:id="@+id/btn_property_animation_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="Property Animation"/>
 
 </LinearLayout>
