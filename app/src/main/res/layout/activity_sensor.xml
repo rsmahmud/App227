@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".SensorActivity">
+
+    <TextView
+        android:id="@+id/tv_sensor_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Sensor Light"/>
+    <TextView
+        android:id="@+id/tv_sensor_proxi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Sensor Proxi"/>
+    <TextView
+        android:id="@+id/tv_sensor_gyro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Gyroscope"/>
+    <TextView
+        android:id="@+id/tv_sensor_acc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Sensor Acc"/>
+    <TextView
+        android:id="@+id/tv_sensor_mag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Sensor Mag"/>
+    <TextView
+        android:id="@+id/tv_sensor_rotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Rotation"/>
+</LinearLayout>

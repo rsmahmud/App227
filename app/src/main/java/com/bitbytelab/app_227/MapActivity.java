@@ -12,8 +12,10 @@ import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -22,9 +24,19 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
+import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class MapActivity extends AppCompatActivity {
@@ -38,6 +50,16 @@ public class MapActivity extends AppCompatActivity {
     boolean flag = false;
     EditText edtSearch;
 
+    private static final int M_MAXENTRIES = 10;
+    private String[] mLikelyPlaceNames;
+    private String[] mLikelyPlaceAddress;
+    private String[] mLikelyPlaceAttributions;
+    private LatLng[] mLikelyPlaceLatLngs;
+    ListView lstPlaces;
+    PlacesClient placesClient;
+    String KEY = "AIzaSyAIwnbfnuDY9XMHOYNtDUlTsGS4cZ0bN1g";
+    AutocompleteSupportFragment autocompleteSupportFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +71,44 @@ public class MapActivity extends AppCompatActivity {
 
         myClient = LocationServices.getFusedLocationProviderClient(this);
 
+        lstPlaces = findViewById(R.id.places_list_view);
+
         checkLocationPermission();
+        if(!Places.isInitialized())
+            Places.initialize(getApplicationContext(),KEY);
+        placesClient = Places.createClient(this);
+
+        autocompleteSupportFragment =
+                (AutocompleteSupportFragment)
+                        getSupportFragmentManager().
+                                findFragmentById(R.id.autocomplete_fragment);
+
+        autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ID,Place.Field.NAME));
+
+        autocompleteSupportFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(@NonNull Place place) {
+                if(place != null){
+                    LatLng latLng = place.getLatLng();
+                    gMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                    if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+                        return;
+                    }
+                    gMap.setMyLocationEnabled(true);
+                    MarkerOptions markerOptions = new MarkerOptions();
+                    markerOptions.position(latLng);
+                    markerOptions.title("Your selected place is this");
+                    Toast.makeText(MapActivity.this,place.getName(),Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onError(@NonNull Status status) {
+
+            }
+        });
+
     }
 
     private void checkLocationPermission(){
@@ -74,6 +133,25 @@ public class MapActivity extends AppCompatActivity {
         }
     }
 
+    public void getCurrentPlace(View view){
+        Toast.makeText(this,"in onClick",Toast.LENGTH_SHORT).show();
+
+        List<Place.Field> placeField = Arrays.asList(Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
+
+        FindCurrentPlaceRequest request = FindCurrentPlaceRequest.builder(placeField).build();
+
+        if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            return;
+        }
+        Task<FindCurrentPlaceResponse> placeResponse = placesClient.findCurrentPlace(request);
+
+        placeResponse.addOnCompleteListener(this, new OnCompleteListener<FindCurrentPlaceResponse>() {
+            @Override
+            public void onComplete(@NonNull Task<FindCurrentPlaceResponse> task) {
+
+            }
+        });
+    }
     private void initMap() {
 
         Toast.makeText(this,"Initialize Map", Toast.LENGTH_SHORT ).show();

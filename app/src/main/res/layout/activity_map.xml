@@ -7,12 +7,29 @@
     tools:context=".MapActivity">
 
     <fragment
+        android:id="@+id/autocomplete_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"/>
+
+    <fragment
         android:id="@+id/mymap_fragment"
         tools:context=".MapsActivity"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/autocomplete_fragment"
+        android:src="@drawable/ic_place_red_24dp"
+        android:onClick="getCurrentPlace"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/places_list_view"
+        android:layout_below="@+id/mymap_fragment"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
