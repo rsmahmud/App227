@@ -68,5 +68,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, SensorActivity.class));
             }
         });
+        findViewById(R.id.btn_proximity_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ProximityActivity.class));
+            }
+        });
+        findViewById(R.id.btn_bluetooth_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, BluetoothActivity.class));
+            }
+        });
+        findViewById(R.id.btn_web_view_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, WebViewActivity.class));
+            }
+        });
     }
 }

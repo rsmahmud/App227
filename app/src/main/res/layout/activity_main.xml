@@ -59,6 +59,24 @@
         android:padding="12dp"
         android:text="Sensor Activity"/>
     <Button
+        android:id="@+id/btn_proximity_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="Proximity Sensor"/>
+    <Button
+        android:id="@+id/btn_bluetooth_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="Bluetooth Activity"/>
+    <Button
+        android:id="@+id/btn_web_view_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="Web View"/>
+    <Button
         android:id="@+id/btn_property_animation_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

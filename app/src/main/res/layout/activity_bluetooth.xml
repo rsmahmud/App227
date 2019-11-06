@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".BluetoothActivity">
+
+    <ImageView
+        android:id="@+id/iv_bt_img"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"/>
+    <Button
+        android:id="@+id/btn_network_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Network Status"/>
+    <Button
+        android:id="@+id/btn_turn_on_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Turn On BT"/>
+    <Button
+        android:id="@+id/btn_turn_off_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Turn Off BT"/>
+    <Button
+        android:id="@+id/btn_discover_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Discover BT Devices"/>
+    <Button
+        android:id="@+id/btn_make_discoverable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Make Discoverable"/>
+    <Button
+        android:id="@+id/btn_paired_devices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Paired Devices"/>
+</LinearLayout>

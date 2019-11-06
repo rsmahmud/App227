@@ -90,7 +90,7 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
                 tvg.setText("Gyroscope "+val);
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD:
-                magarr = sensorEvent.values.clone();
+                magarr = sensorEvent.values.clone();   
                 TextView tvm = findViewById(R.id.tv_sensor_mag);
                 tvm.setText("Magnetic Field "+magarr[0]+" "+magarr[1]+" "+magarr[2]);
                 break;
